@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#162e4e">
+<meta name="description" content="중학교 2학년 삼각형의 무게중심 인터랙티브 탐구: 게임, 중선, 닮음 증명, 넓이 6등분">
+<title>삼각형의 무게중심 | 3D 수학 탐구</title>
+<style>
+:root{--navy:#142b49;--navy2:#214468;--ink:#192a3d;--muted:#617187;--mint:#127e72;--gold:#f6b84c;--bg:#f3f7fb;--panel:#fff;--line:#dee6ee;--pale:#e7f4f0;--danger:#b94c53;--shadow:0 16px 46px rgba(30,61,92,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);font-family:system-ui,-apple-system,"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;color:var(--ink);font-size:16px;line-height:1.62}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}a{color:inherit}.app-head{background:var(--navy);color:white}.head-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 22px}.brand{display:flex;align-items:center;gap:12px}.brand-symbol{background:#2c526f;width:43px;height:43px;display:grid;place-items:center;border-radius:13px;font-size:25px;color:#a8f0df}.brand strong{display:block;font-size:19px;letter-spacing:-.5px;line-height:1.3}.brand small{color:#c3d4e5;font-size:12px;line-height:1.4}.head-label{font-size:12px;border:1px solid #56718d;border-radius:999px;padding:6px 12px;white-space:nowrap}.shell{max-width:1200px;margin:auto;padding:26px 22px 60px}.hero{background:linear-gradient(125deg,#183652 0%,#285470 65%,#24796e 100%);border-radius:24px;min-height:174px;color:white;padding:28px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px;overflow:hidden;position:relative}.hero h1{font-size:clamp(25px,3.5vw,37px);margin:2px 0 8px;line-height:1.35;letter-spacing:-1.3px}.hero p{color:#dfedec;margin:0;font-size:15px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.4px;color:#a8e2d5}.hero-graphic{width:192px;max-width:30%;flex-shrink:0;opacity:.9}.notice{display:flex;align-items:flex-start;gap:10px;font-size:13px;background:#fff8e8;color:#765416;border:1px solid #efdcad;padding:12px 16px;border-radius:11px;margin:17px 0 21px}.notice b{white-space:nowrap}.stage-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:18px 0}.stage-tab{border:1.5px solid var(--line);background:white;border-radius:14px;padding:14px 12px;text-align:left;color:var(--ink);display:flex;align-items:center;gap:11px;min-height:72px;transition:background .15s,border .15s}.stage-tab:hover{border-color:#80aba8}.stage-tab.active{border-color:var(--mint);background:#eaf6f2;box-shadow:0 2px 0 #accfc6}.stage-index{display:grid;place-items:center;width:31px;height:31px;background:#eaf0f6;border-radius:10px;font-weight:800;color:#4c617d}.stage-tab.active .stage-index{background:var(--mint);color:white}.stage-label{font-weight:800;font-size:14px;line-height:1.35}.stage-tab small{font-size:11px;color:var(--muted)}.stage-complete{margin-left:auto;color:var(--mint);font-weight:900}.columns{display:grid;grid-template-columns:minmax(0,1fr) 272px;gap:19px;align-items:start}.main-card,.side-card{background:white;border-radius:19px;border:1px solid var(--line);box-shadow:var(--shadow)}.main-card{padding:25px}.side-card{padding:21px;margin-bottom:16px}.section-kicker{color:var(--mint);font-weight:850;font-size:12px;letter-spacing:1.15px}.section-top{display:flex;justify-content:space-between;gap:18px;align-items:start}.section-top h2{margin:3px 0 3px;font-size:25px;letter-spacing:-.8px}.section-desc{color:var(--muted);margin:4px 0 17px;font-size:14px}.mini-pill{color:#276a61;background:#e7f4ef;font-weight:800;font-size:12px;padding:6px 11px;border-radius:99px;white-space:nowrap}.subnav{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 16px}.sub-button{border:1px solid var(--line);background:#fff;color:#466179;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:800}.sub-button.active{color:#fff;border-color:var(--navy2);background:var(--navy2)}.diagram{border:1px solid #dae7f1;background:linear-gradient(180deg,#f8fbfe,#eef6fc);border-radius:14px;overflow:hidden;padding:8px;margin:10px 0 16px;min-height:285px;display:grid;place-items:center}.diagram svg{width:100%;max-height:348px;display:block;touch-action:none}.diagram.game svg{cursor:crosshair}.diagram .faint{fill:#daeafa;stroke:#3f6c9d;stroke-width:2.6}.diagram text{font-family:system-ui,'Malgun Gothic',sans-serif;user-select:none}.problem{font-weight:800;font-size:17px;margin:17px 0 12px}.hint{font-size:13px;background:#f2f7fa;border-left:3px solid #74a6b1;padding:12px 14px;border-radius:8px;margin:13px 0}.hint strong{color:#355c73}.task-row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:13px 0}.button{border:1px solid transparent;background:var(--mint);color:white;font-weight:800;padding:11px 16px;border-radius:10px;font-size:14px}.button:hover:not(:disabled){filter:brightness(.96)}.button.secondary{background:#eff4f7;border:1px solid #d8e2eb;color:#31506a}.button.outline{background:#fff;border:1px solid #bed1dc;color:#31506a}.button.primary-dark{background:var(--navy2)}.choice{border:1.5px solid #d6e0e8;padding:13px 14px;background:white;border-radius:12px;font-weight:750;color:#2a435e;min-width:124px}.choice.selected{border-color:#249084;background:#e4f4ef;color:#17675d}.choice.good{border-color:#2a9c7c;background:#e1f8ed}.answer-input{width:80px;max-width:100%;font-size:22px;text-align:center;border:1.5px solid #b9cede;border-radius:10px;padding:9px;color:#1c4267;font-weight:850;background:white}.answer-input:focus{outline:3px solid #b6e7de;outline-offset:1px}.answer-line{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-size:18px;font-weight:800;margin:13px 0}.feedback{border-radius:11px;padding:12px 15px;font-size:14px;font-weight:750;margin-top:12px;background:#e9f7ee;border:1px solid #a8ddbd;color:#216c49}.feedback.warn{background:#fff3ed;border-color:#efcfb5;color:#98552c}.feedback.neutral{background:#ebf3fa;border-color:#bdd7ec;color:#335e81}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:16px 0}.stat{border:1px solid var(--line);background:#f8fbfd;padding:13px 9px;border-radius:11px;text-align:center}.stat strong{display:block;font-size:24px;line-height:1.3;color:var(--navy2)}.stat span{display:block;font-size:12px;color:var(--muted)}.side-card h3{margin:0 0 11px;font-size:17px}.progressbar{background:#e7eef3;height:10px;border-radius:9px;overflow:hidden;margin:12px 0 6px}.progressbar>div{height:100%;background:linear-gradient(90deg,#46ad94,#147d73);border-radius:9px;transition:width .25s}.side-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:15px}.check-row{display:flex;align-items:start;gap:10px;margin:11px 0;font-size:12.5px}.check-icon{display:grid;place-items:center;color:#7e8b9a;border:1px solid #d9e1e9;width:20px;height:20px;flex-shrink:0;border-radius:50%;font-size:12px}.check-row.done .check-icon{background:#e0f7e9;color:#167c64;border-color:#9edabf}.check-row.done{color:#1e705f}.side-note{font-size:12px;line-height:1.7;color:#64798d;background:#f1f6f9;border-radius:10px;padding:11px;margin-top:13px}.go-row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:19px;border-top:1px solid var(--line);padding-top:16px}.micro{color:var(--muted);font-size:12px}.six-caption{color:var(--muted);font-size:12px}.center{text-align:center}.area-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:14px 0}.area-chip{padding:8px 3px;text-align:center;font-weight:800;font-size:13px;border:1px solid #d6e0e9;border-radius:9px;background:#fafcff}.area-chip.active{background:#dff4ea;border-color:#6cbea5}.footer{max-width:1200px;margin:0 auto 30px;padding:0 22px;color:#77889b;font-size:12px;text-align:center}.lesson-done{background:#e7f4ef;border:1px solid #9accbb;padding:17px;border-radius:13px;margin:14px 0}.lesson-done h3{margin:0 0 5px;color:#146e62}.lesson-done p{margin:0;font-size:13px;color:#355e5a}.modal-toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,18px);opacity:0;pointer-events:none;background:#183650;color:white;border-radius:12px;padding:12px 22px;box-shadow:0 12px 30px #14283c50;z-index:10;max-width:min(90vw,530px);text-align:center;transition:.2s}.modal-toast.on{opacity:1;transform:translate(-50%,0)}.vertex{cursor:grab}.vertex:active{cursor:grabbing}button:focus-visible{outline:3px solid #f2b34d;outline-offset:2px}
+@media (max-width:890px){.columns{grid-template-columns:1fr}.side{display:grid;grid-template-columns:1fr 1fr;gap:12px}.side-card{margin:0}.hero-graphic{max-width:25%}.main-card{padding:18px}.stage-tab{padding:10px}.stage-label{font-size:12px}}
+@media (max-width:600px){.shell{padding:15px 12px 32px}.head-inner{padding:11px 14px}.head-label{display:none}.hero{padding:21px;min-height:138px}.hero p{font-size:12px}.hero-graphic{display:none}.notice{font-size:12px}.notice b{white-space:normal}.stage-nav{grid-template-columns:repeat(2,1fr);gap:7px}.stage-tab{min-height:62px}.columns{gap:10px}.side{display:block}.side-card{margin-bottom:10px}.section-top h2{font-size:22px}.diagram{min-height:205px;padding:0}.diagram svg{max-height:255px}.choice{min-width:100px}.stat strong{font-size:20px}.area-grid{grid-template-columns:repeat(3,1fr)}.go-row{flex-wrap:wrap}}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Immersive offline 3D balance stage */
+.diagram.game3d{display:block;padding:0;min-height:0;border:1px solid #bfd4e3;background:#eaf1f8;position:relative;isolation:isolate;box-shadow:inset 0 1px 8px #c8dce833;}
+.game3d canvas{width:100%;height:auto;aspect-ratio:960/532;display:block;cursor:crosshair;touch-action:manipulation;user-select:none;-webkit-user-select:none;}
+.game3d-panel{position:absolute;left:16px;bottom:14px;right:16px;display:flex;gap:12px;align-items:end;justify-content:space-between;pointer-events:none;}
+.game3d-label{max-width:80%;background:#163d59df;backdrop-filter:blur(5px);border:1px solid #ffffff30;color:#fff;font-size:13px;padding:10px 13px;border-radius:12px;box-shadow:0 5px 20px #18344c33;font-weight:650;}
+.game3d-time{background:#fffef8f2;color:#23415c;border-radius:13px;padding:7px 14px;box-shadow:0 4px 20px #243a4533;text-align:center;min-width:90px;}
+.game3d-time strong{display:block;font-size:22px;font-variant-numeric:tabular-nums;line-height:1.25;white-space:nowrap}.game3d-time small{font-size:10px;color:#52677c;font-weight:700;}
+.game3d-gamebar{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+.game3d-gamebar .micro{flex:1;min-width:170px}
+@media(max-width:600px){.game3d-panel{left:7px;right:7px;bottom:6px;gap:5px}.game3d-label{padding:5px 8px;font-size:10px;line-height:1.4}.game3d-time{min-width:57px;padding:5px 7px}.game3d-time strong{font-size:15px}.game3d-time small{font-size:9px}.game3d canvas{min-height:220px;object-fit:contain}}
+
+
+/* v2: Larger instructional typography; optional web load, fully functional offline fallback. */
+@font-face{font-family:Pretendard;src:url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2) format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Pretendard;src:url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2) format('woff2');font-weight:700 900;font-display:swap}
+body{font-family:Pretendard,'Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;font-size:18px;line-height:1.65}
+button,input{font-family:inherit}.shell{max-width:1390px}.head-inner{max-width:1390px}.footer{max-width:1390px}
+.brand strong{font-size:23px}.brand small{font-size:14px}.head-label{font-size:13px}
+.hero h1{font-size:clamp(25px,3.15vw,36px)}.hero p{font-size:17px}
+.notice{font-size:15px}.stage-label{font-size:16px}.stage-tab small{font-size:13px}
+.columns{grid-template-columns:minmax(0,1fr) 260px}.columns.is-proof{grid-template-columns:minmax(0,1fr) 215px}
+.section-top h2{font-size:29px}.section-desc{font-size:17px}.section-kicker{font-size:14px}
+.sub-button{font-size:15px;padding:10px 14px}.mini-pill{font-size:14px}.problem{font-size:20px}
+.hint{font-size:16px;line-height:1.7}.button{font-size:16px}.choice{font-size:16px;min-width:100px}
+.side-card h3{font-size:19px}.side-meta,.check-row,.side-note,.micro,.stat span{font-size:14px}
+.diagram svg text{font-family:'Times New Roman',Georgia,serif;font-style:italic;font-weight:400}
+.diagram svg .math-label{font-family:'Times New Roman',Georgia,serif;font-style:italic;font-weight:500}
+.diagram svg .median-target-edge{cursor:crosshair;pointer-events:stroke}
+.diagram svg .median-target-edge:hover{stroke:#4cbf9d;stroke-opacity:.21}
+.diagram svg .median-target-vertex{cursor:crosshair}
+.diagram svg .centroid-halo{transform-box:fill-box;transform-origin:center;animation:centroidPulse 1.4s ease-in-out infinite}
+@keyframes centroidPulse{0%,100%{opacity:.3;stroke-width:3;transform:scale(.75)}50%{opacity:1;stroke-width:5;transform:scale(1.35)}}
+.median-diagram{position:relative}.median-toolbar{display:flex;align-items:center;gap:15px;border:1px solid #bdded5;border-radius:12px;background:#eefaf6;padding:11px 14px;margin:12px 0}
+.median-toolbar .button{white-space:nowrap}.tool-instruction{display:grid;gap:1px}.tool-instruction b{font-size:17px;color:#235d54}.tool-instruction span{font-size:14px;color:#55756c}
+.centroid-question{position:absolute;inset:0;display:grid;place-content:center;text-align:center;padding:16px;background:rgba(12,37,66,.88);color:white;font-size:clamp(23px,3.15vw,37px);font-weight:900;line-height:1.45;letter-spacing:-.5px;z-index:5;animation:centroidReveal 0.65s cubic-bezier(.2,.9,.3,1) both;pointer-events:none;text-shadow:0 3px 18px #061529}
+@keyframes centroidReveal{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:scale(1)}}
+.proof-workspace{display:grid;grid-template-columns:minmax(278px,.92fr) minmax(0,1.4fr);align-items:start;gap:18px;margin-top:12px}
+.proof-board{background:#f6f8fb;border:1px solid #cddbe6;border-radius:15px;padding:16px;max-height:790px;overflow:auto;scrollbar-width:thin}
+.proof-board-heading{position:sticky;top:-16px;z-index:2;background:#f6f8fb;padding:0 0 10px;border-bottom:1px solid #dae4ee;margin-bottom:12px}
+.proof-board-heading span{font-weight:900;font-size:19px;color:#193653;display:block}
+.proof-board-heading small{font-size:13px;color:#647789}
+.proof-step{display:flex;gap:10px;border-radius:11px;padding:10px 6px;border:1px solid transparent;margin-bottom:9px}
+.proof-current{background:white;border-color:#c5d7e7}
+.proof-achieved{background:#effaf5;border-color:#acd9c4}
+.step-num{display:grid;place-items:center;flex:0 0 27px;height:27px;background:#dfebf4;color:#294665;border-radius:8px}
+.proof-achieved .step-num{background:#167f70;color:white}.proof-step-text{min-width:0;line-height:1.68;font-size:16px;word-break:keep-all}
+.proof-step-text>b{font-size:16px;color:#1f3855}.proof-step-text p{margin:7px 0}
+.proof-step-text em,.math-assert,.math-inline,.proved-math{font-family:'Times New Roman',Georgia,serif;font-size:1.08em;font-style:italic}
+.proof-step-text .math-assert{font-size:17px;line-height:1.5}
+.proved-math{font-weight:700;color:#096c59;background:#dff4e9;border-radius:5px;padding:1px 4px}
+.blank-proof{color:#7e8691;border-bottom:1px dashed #8da4b3;font-weight:700;font-size:13px}
+.proof-question{min-width:0}.proof-question .diagram{min-height:260px;padding:4px;margin:8px 0 12px}
+.proof-question .diagram svg{max-height:325px}.proof-question .choice{min-width:90px;padding:9px 12px}
+.proof-question .answer-line{font-size:17px;gap:7px}.proof-question .answer-input{width:65px}
+.area-info-row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:7px 0 8px;padding:12px 17px;background:#ebf7f4;border:1px solid #b9dfd4;border-radius:11px}
+.area-info-row>span{font-size:15px;color:#496d68}.area-info-row strong{font-size:21px;color:#0d685e;white-space:nowrap}
+@media(max-width:1080px){.columns.is-proof{grid-template-columns:1fr}.columns.is-proof .side{display:grid;grid-template-columns:1fr 1fr}.proof-workspace{grid-template-columns:minmax(270px,1fr) minmax(0,1.3fr)}}
+@media(max-width:890px){.columns{grid-template-columns:1fr}.stage-label{font-size:15px}.columns.is-proof .side{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:690px){.proof-workspace{grid-template-columns:1fr}.proof-board{max-height:none;overflow:visible}.proof-question .diagram svg{max-height:320px}.columns.is-proof .side{display:block}.median-toolbar{align-items:stretch;flex-direction:column}.area-info-row{flex-wrap:wrap}.hero h1{font-size:26px}.stage-label{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.centroid-question,.diagram svg .centroid-halo{animation:none}}
+
+</style>
+</head>
+<body>
+<header class="app-head"><div class="head-inner"><div class="brand"><span class="brand-symbol" aria-hidden="true">△</span><div><strong>삼각형의 무게중심</strong><small>중학교 2학년 · 삼각형의 무게중심</small></div></div><span class="head-label">학생 자율 탐구 · 오프라인 3D HTML</span></div></header>
+<main class="shell">
+  <section class="hero"><div><div class="eyebrow">FIND THE BALANCE</div><h1>삼각형의 무게중심의 뜻과 성질을 이해한다.</h1><p>균형점 게임부터 중선, 닮음 증명, 넓이의 6등분까지 직접 탐구해 보세요.</p></div><svg class="hero-graphic" viewBox="0 0 210 160" aria-hidden="true"><path d="M93 12 L15 142 L195 142 Z" fill="#d9ffec19" stroke="#d8f1e5" stroke-width="2"/><path d="M93 12 L105 142 M15 142 L144 77 M195 142 L54 77" stroke="#9ae7c8" stroke-dasharray="5 5" stroke-width="2"/><circle cx="101" cy="99" r="6" fill="#f9c86b"/><text x="115" y="100" fill="#ffe8b2" font-size="15" font-weight="bold">G</text></svg></section>
+  <div class="notice"><b>수업용 안내</b><span>설치나 로그인 없이 이 HTML 파일을 열면 바로 탐구할 수 있습니다. <strong>4가지 학습 단계와 9가지 활동을 원하는 순서대로 선택</strong>할 수 있으며, 교사 원격 제어·단계 잠금·화면 감시·학생 정보 입력은 없습니다. 개인 학습 진도는 이 브라우저 탭에만 임시 저장되고 외부로 전송되지 않습니다.</span></div>
+  <nav class="stage-nav" aria-label="학습 단계" id="stage-nav"></nav>
+  <div class="columns"><section class="main-card" id="stage-content" aria-live="polite"></section><aside class="side" id="sidebar"></aside></div>
+</main>
+<div class="footer">균일한 삼각형 판을 가정한 교육용 모델입니다. 게임은 원근감 있는 3D 도형과 물리 현상을 참고한 쓰러짐 애니메이션을 사용하며, 유지 시간은 실제 측정값이 아닌 가상 수치입니다. · © 학습용 제작</div>
+<div class="modal-toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';
+const KEY='centroid_3d_student_v3';
+const STAGES=['무게중심 게임','중선 탐구','성질 증명','넓이 탐구'];
+const SUBS=[['균형점 찾기'],['세 중선 그리기','모양 바꿔 관찰'],['첫 닮음 찾기','2:1의 비','두 번째 닮음','세 중선의 교점'],['넓이 구하기','6개 넓이 비교']];
+const IDS=[['g0'],['m0','m1'],['p0','p1','p2','p3'],['a0','a1']];
+const TRI={A:{x:280,y:40},B:{x:80,y:335},C:{x:565,y:325}};
+const cloneTri=()=>JSON.parse(JSON.stringify(TRI));
+let state={stage:0,sub:0,done:[],tri:cloneTri(),medians:[],dragged:false,gameAttempts:0,best:0,last:0,run:false,point:null,choices:[],choices2:[],pieces:[],proofChoice:'',reveal:false,medianTool:false,medianStart:'',medianQuestion:false};
+try{const saved=JSON.parse(sessionStorage.getItem(KEY)||'null');if(saved && typeof saved.stage==='number'){state={...state,...saved,run:false,point:null,tri:saved.tri||cloneTri(),choices:[],choices2:[],medianTool:false,medianStart:'',medianQuestion:false};}}catch{}
+const $=id=>document.getElementById(id);
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+const mid=(a,b)=>({x:(a.x+b.x)/2,y:(a.y+b.y)/2});
+const centroid=t=>({x:(t.A.x+t.B.x+t.C.x)/3,y:(t.A.y+t.B.y+t.C.y)/3});
+const vec=p=>`${p.x.toFixed(2)},${p.y.toFixed(2)}`;
+const points=(...p)=>p.map(vec).join(' ');
+const dist=(p,q)=>Math.hypot(p.x-q.x,p.y-q.y);
+const complete=id=>state.done.includes(id);
+const persist=()=>{const copy={...state,run:false,point:null};try{sessionStorage.setItem(KEY,JSON.stringify(copy))}catch{}};
+let timeout;
+function toast(s){const elem=$('toast');elem.textContent=s;elem.classList.add('on');clearTimeout(timeout);timeout=setTimeout(()=>elem.classList.remove('on'),2700)}
+function finish(id,message){if(!complete(id)){state.done.push(id);persist();if(message)toast(message);}render();}
+function stageTo(i){cancelAnimationFrame(G3.raf);G3.token++;G3.running=false;state.stage=clamp(i,0,3);state.sub=0;state.run=false;state.point=null;state.reveal=false;state.choices=[];state.choices2=[];state.medianTool=false;state.medianStart='';state.medianQuestion=false;persist();render();}
+function subTo(i){state.sub=clamp(i,0,SUBS[state.stage].length-1);state.reveal=false;state.choices=[];state.choices2=[];state.medianTool=false;state.medianStart='';state.medianQuestion=false;persist();render();}
+function help(text){return `<div class="hint"><strong>생각 열기</strong> · ${text}</div>`}
+const text=(p,label,dx=9,dy=-8)=>`<text class="math-label" x="${p.x+dx}" y="${p.y+dy}" font-size="22" fill="#243e5d">${label}</text>`;
+const line=(a,b,color='#557c9b',width=2,dash='')=>`<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="${color}" stroke-width="${width}" ${dash?`stroke-dasharray="${dash}"`:''}/>`;
+const circle=(p,color='#346ea2',r=5)=>`<circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${color}" stroke="white" stroke-width="1.7"/>`;
+function svgWrapper(content,attrs=''){return `<svg id="math-svg" viewBox="0 0 650 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="삼각형 탐구 도형" ${attrs}>${content}</svg>`}
+function triangle(t,fill='#dceafb'){return `<polygon points="${points(t.A,t.B,t.C)}" fill="${fill}" stroke="#456f9f" stroke-width="3" stroke-linejoin="round"/>`}
+function standardLabels(t){return text(t.A,'A',-8,-14)+text(t.B,'B',-23,22)+text(t.C,'C',10,22)}
+function segmentTicks(a,b,n=1,color='#394f65'){
+ const dx=b.x-a.x,dy=b.y-a.y,L=Math.hypot(dx,dy)||1;
+ const nx=-dy/L,ny=dx/L,tx=dx/L,ty=dy/L,cx=(a.x+b.x)/2,cy=(a.y+b.y)/2;
+ return Array.from({length:n},(_,i)=>{
+  const delta=(i-(n-1)/2)*8,x=cx+tx*delta,y=cy+ty*delta;
+  return `<line x1="${x-nx*7}" y1="${y-ny*7}" x2="${x+nx*7}" y2="${y+ny*7}" stroke="${color}" stroke-width="2.4" stroke-linecap="round" pointer-events="none"/>`;
+ }).join('');
+}
+function allMidpointTicks(t,withD=true){
+ const {A,B,C}=t,E=mid(A,C),F=mid(A,B),D=mid(B,C);
+ return segmentTicks(A,F,1)+segmentTicks(F,B,1)+segmentTicks(A,E,2)+segmentTicks(E,C,2)+(withD?segmentTicks(B,D,3)+segmentTicks(D,C,3):'');
+}
+// Offline perspective 3D balance lab. No external library or network calls.
+const G3 = {
+  W: 960, H: 532, running:false, raf:0, token:0, mode:'idle',
+  picked:null, hover:null, start:0, duration:0, elapsed:0, fallStart:0, tilt:0,
+  settledAt:0, success:false, axis:null, shadowOpacity:0.2,
+  labels:{A:'A',B:'B',C:'C'}
+};
+const v3=(x=0,y=0,z=0)=>({x,y,z});
+const add3=(a,b)=>v3(a.x+b.x,a.y+b.y,a.z+b.z);
+const sub3=(a,b)=>v3(a.x-b.x,a.y-b.y,a.z-b.z);
+const scale3=(a,s)=>v3(a.x*s,a.y*s,a.z*s);
+const dot3=(a,b)=>a.x*b.x+a.y*b.y+a.z*b.z;
+const cross3=(a,b)=>v3(a.y*b.z-a.z*b.y,a.z*b.x-a.x*b.z,a.x*b.y-a.y*b.x);
+const norm3=a=>{const l=Math.hypot(a.x,a.y,a.z)||1;return scale3(a,1/l)};
+const MODEL={A:v3((TRI.A.x-322)/108,0,(TRI.A.y-220)/116),B:v3((TRI.B.x-322)/108,0,(TRI.B.y-220)/116),C:v3((TRI.C.x-322)/108,0,(TRI.C.y-220)/116)};
+const GC=scale3(add3(add3(MODEL.A,MODEL.B),MODEL.C),1/3);
+const CAM=v3(2.1,8.2,8.0), TARGET=v3(0,.46,0), FWD=norm3(sub3(TARGET,CAM)), RIGHT=norm3(cross3(FWD,v3(0,1,0))), UP=cross3(RIGHT,FWD);
+function project3(p){const rel=sub3(p,CAM), depth=Math.max(0.5,dot3(rel,FWD)),f=G3.W*1.08;return {x:G3.W*.5+dot3(rel,RIGHT)*f/depth,y:G3.H*.48-dot3(rel,UP)*f/depth,depth};}
+function toTriPoint3(uvw){return v3(MODEL.A.x*uvw[0]+MODEL.B.x*uvw[1]+MODEL.C.x*uvw[2],0,MODEL.A.z*uvw[0]+MODEL.B.z*uvw[1]+MODEL.C.z*uvw[2])}
+function barycentric2(p,a,b,c){const v0={x:b.x-a.x,y:b.y-a.y},v1={x:c.x-a.x,y:c.y-a.y},v2={x:p.x-a.x,y:p.y-a.y};const den=v0.x*v1.y-v1.x*v0.y;if(Math.abs(den)<1e-7)return null;const vb=(v2.x*v1.y-v1.x*v2.y)/den,vc=(v0.x*v2.y-v2.x*v0.y)/den,va=1-vb-vc;return [va,vb,vc].every(x=>x>=-.008)?[va,vb,vc]:null;}
+function gameScenePoints(){const p=G3.picked||GC,unit=G3.axis||v3(0,0,1),theta=G3.tilt||0;
+ const fall=G3.mode==='fall'||G3.mode==='settled',u=fall?Math.min(1,(G3.elapsed-G3.duration)/1.45):0;
+ const glide=fall?.72*Math.max(0,(u-.27)/.73):0;
+ const dir=norm3(v3(GC.x-p.x,0,GC.z-p.z));
+ const trans=add3(p,scale3(dir,glide));
+ const rot=(q)=>{const rel=sub3(q,p),co=Math.cos(theta),si=Math.sin(theta),axis=unit;
+   return add3(add3(scale3(rel,co),scale3(cross3(axis,rel),si)),scale3(axis,dot3(axis,rel)*(1-co)));};
+ const relative=Object.fromEntries(Object.entries(MODEL).map(([k,v])=>[k,rot(v)]));
+ const lowest=Math.min(...Object.values(relative).map(q=>q.y))-.085;
+ let py=1.33;
+ if(fall){const down=Math.pow(u,1.7);py=Math.max(.09-lowest,1.33*(1-down));}
+ const map=(q,thick=0)=>{const r=rot(q);return v3(r.x+trans.x,r.y+py+thick,r.z+trans.z)};
+ return {top:Object.fromEntries(Object.keys(MODEL).map(k=>[k,map(MODEL[k],.07)])),bottom:Object.fromEntries(Object.keys(MODEL).map(k=>[k,map(MODEL[k],-.07)])),pivot:trans,pivotY:py};
+}
+function polygonPath3(ctx,p){ctx.beginPath();p.forEach((v,i)=>i?ctx.lineTo(v.x,v.y):ctx.moveTo(v.x,v.y));ctx.closePath();}
+function polygon3(ctx,p,fill,stroke,width=1){polygonPath3(ctx,p);if(fill){ctx.fillStyle=fill;ctx.fill()}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke()}}
+function roundedRect3(ctx,x,y,w,h,r,fill){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.fillStyle=fill;ctx.fill()}
+function pencil3(ctx,pos,height){const tip=project3(v3(pos.x,height-.05,pos.z)),base=project3(v3(pos.x,0.03,pos.z)),bottom=project3(v3(pos.x,.1,pos.z)),neck=project3(v3(pos.x,height-.30,pos.z));const w=11*(9/Math.max(5,tip.depth));
+ // translucent foot contact shadow
+ const bgrad=ctx.createRadialGradient(base.x,base.y,2,base.x,base.y,25);bgrad.addColorStop(0,'#705a40a8');bgrad.addColorStop(1,'#705a4000');ctx.fillStyle=bgrad;ctx.beginPath();ctx.ellipse(base.x,base.y,24,11,0,0,Math.PI*2);ctx.fill();
+ polygon3(ctx,[{x:base.x-w,y:base.y},{x:neck.x-w*.83,y:neck.y},{x:neck.x+w*.83,y:neck.y},{x:base.x+w,y:base.y}], '#efae43','#aa7232',1.3);
+ polygon3(ctx,[{x:base.x,y:base.y},{x:neck.x,y:neck.y},{x:neck.x+w*.83,y:neck.y},{x:base.x+w,y:base.y}], '#f7cf76',null);
+ polygon3(ctx,[{x:neck.x-w*.83,y:neck.y},{x:tip.x,y:tip.y},{x:neck.x+w*.83,y:neck.y}], '#dcb88a','#a98b63',.7);
+ polygon3(ctx,[{x:tip.x-2,y:tip.y+3},{x:tip.x,y:tip.y-4},{x:tip.x+2,y:tip.y+3}], '#4c5860',null);
+ ctx.strokeStyle='#fff3bb';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(base.x-w*.47,base.y);ctx.lineTo(neck.x-w*.41,neck.y);ctx.stroke();
+ // metallic bottom ferrule
+ polygon3(ctx,[{x:base.x-w-1,y:base.y-12},{x:base.x+w+1,y:base.y-12},{x:base.x+w,y:base.y+2},{x:base.x-w,y:base.y+2}], '#8eacb4','#546875',1);
+}
+function canvasBackground3(ctx){const W=G3.W,H=G3.H;
+ let sky=ctx.createLinearGradient(0,0,0,H);sky.addColorStop(0,'#e5f3fc');sky.addColorStop(.52,'#f8faf9');sky.addColorStop(.75,'#ede4d7');sky.addColorStop(1,'#d9bfa5');ctx.fillStyle=sky;ctx.fillRect(0,0,W,H);
+ let glow=ctx.createRadialGradient(W*.23,H*.11,0,W*.23,H*.11,W*.65);glow.addColorStop(0,'#ffffffb3');glow.addColorStop(1,'#ffffff00');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+ const far=project3(v3(0,0,-20)).y;
+ const desk=ctx.createLinearGradient(0,Math.max(150,far),0,H);desk.addColorStop(0,'#f1e8df');desk.addColorStop(.65,'#e4d1bb');desk.addColorStop(1,'#d6bba2');ctx.fillStyle=desk;ctx.fillRect(0,Math.max(150,far),W,H);
+ ctx.save();ctx.strokeStyle='#b9987552';ctx.lineWidth=1;
+ for(let z=-7;z<13;z+=1.15){const a=project3(v3(-20,.001,z)),b=project3(v3(20,.001,z));ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+ ctx.strokeStyle='#b7a1882a';for(let x=-20;x<20;x+=1.25){const a=project3(v3(x,.002,-20)),b=project3(v3(x,.002,20));ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()}
+ ctx.restore();
+ let vignette=ctx.createRadialGradient(W*.5,H*.4,H*.2,W*.5,H*.45,W*.8);vignette.addColorStop(0,'#0c274000');vignette.addColorStop(1,'#344c6d1f');ctx.fillStyle=vignette;ctx.fillRect(0,0,W,H);
+}
+function drawShadow3(ctx,points){const shadow=Object.values(points.top).map(p=>project3(v3(p.x,0.016,p.z)));
+ ctx.save();ctx.filter='blur(12px)';ctx.globalAlpha=.27;polygon3(ctx,shadow,'#344d5b',null);ctx.restore();
+ const center=project3(v3((points.pivot.x+GC.x)/2,.008,(points.pivot.z+GC.z)/2));
+ const grad=ctx.createRadialGradient(center.x,center.y,0,center.x,center.y,155);grad.addColorStop(0,'#3444574d');grad.addColorStop(1,'#34445700');ctx.fillStyle=grad;ctx.beginPath();ctx.ellipse(center.x,center.y,170,44,0,0,Math.PI*2);ctx.fill();
+}
+function drawPlate3(ctx,points){const top=Object.values(points.top),bottom=Object.values(points.bottom),tp=top.map(project3),bp=bottom.map(project3);
+ // Side walls are extruded polygons, which respond to actual 3D rotation.
+ polygon3(ctx,bp,'#528cb9','#366b9c',1.1);
+ const ids=['A','B','C'];const faces=[];
+ for(let i=0;i<3;i++){const j=(i+1)%3;const poly=[bp[i],bp[j],tp[j],tp[i]];const n=cross3(sub3(top[j],top[i]),sub3(bottom[i],top[i]));const shade=.62+.26*Math.abs(dot3(norm3(n),norm3(v3(-.6,1,.8))));faces.push({p:poly,depth:poly.reduce((a,x)=>a+x.depth,0)/4,shade,i})}
+ faces.sort((a,b)=>b.depth-a.depth);for(const f of faces){polygon3(ctx,f.p, f.i===0?'#4f88b8':f.i===1?'#4878a8':'#376797','#2c638f',1.2);ctx.save();ctx.globalAlpha=.27;polygon3(ctx,f.p,'#bed9ef',null);ctx.restore()}
+ ctx.save();ctx.shadowColor='#315e8968';ctx.shadowBlur=20;ctx.shadowOffsetY=7;
+ const base=ctx.createLinearGradient(tp[0].x,tp[0].y,tp[2].x,tp[2].y);base.addColorStop(0,'#f5fbff');base.addColorStop(.32,'#b7d7f0');base.addColorStop(.7,'#80b6de');base.addColorStop(1,'#4b84b6');
+ polygon3(ctx,tp,base,'#2d6f9f',2.2);ctx.restore();
+ ctx.save();polygonPath3(ctx,tp);ctx.clip();
+ const wash=ctx.createLinearGradient(0,100,780,350);wash.addColorStop(0,'#ffffff85');wash.addColorStop(.42,'#ffffff00');wash.addColorStop(1,'#173f6b20');ctx.fillStyle=wash;ctx.fillRect(0,0,G3.W,G3.H);
+ ctx.strokeStyle='#ffffff3b';ctx.lineWidth=2;for(let k=-3;k<20;k++){ctx.beginPath();ctx.moveTo(k*90-250,0);ctx.lineTo(k*90+200,G3.H);ctx.stroke()}
+ ctx.restore();
+ // light tracing on high edge
+ ctx.beginPath();ctx.moveTo(tp[0].x,tp[0].y);ctx.lineTo(tp[1].x,tp[1].y);ctx.strokeStyle='#f2fcff';ctx.lineWidth=3;ctx.stroke();
+ // White embossed A/B/C markers follow each vertex in perspective.
+ ids.forEach((id,i)=>{const v=tp[i],ox=i===0?0:i===1?-14:12,oy=i===0?-20:15;ctx.save();ctx.shadowColor='#0e355666';ctx.shadowBlur=8;ctx.fillStyle='#ffffffec';ctx.beginPath();ctx.arc(v.x+ox,v.y+oy,16,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.strokeStyle='#70a0c5';ctx.lineWidth=1.2;ctx.stroke();ctx.fillStyle='#245f89';ctx.font='800 17px system-ui, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(id,v.x+ox,v.y+oy+.4);ctx.restore()});
+ if(G3.picked){const transformed=(pt)=>{const axis=G3.axis||v3(0,0,1),r=sub3(pt,G3.picked),co=Math.cos(G3.tilt||0),si=Math.sin(G3.tilt||0);return add3(add3(scale3(r,co),scale3(cross3(axis,r),si)),scale3(axis,dot3(axis,r)*(1-co)))};
+ const ref=transformed(G3.picked),pivot3=v3(points.pivot.x+ref.x,points.pivotY+ref.y+.092,points.pivot.z+ref.z),h=project3(pivot3);
+ ctx.save();ctx.shadowColor='#4e190e8c';ctx.shadowBlur=11;ctx.fillStyle='#f2ab36';ctx.beginPath();ctx.arc(h.x,h.y,7,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;ctx.lineWidth=2;ctx.strokeStyle='#fff8dc';ctx.stroke();ctx.restore();
+ }
+}
+function drawGame3D(){const cvs=$('game3d-canvas');if(!cvs||state.stage!==0)return;const ctx=cvs.getContext('2d');if(!ctx)return;ctx.clearRect(0,0,G3.W,G3.H);canvasBackground3(ctx);const points=gameScenePoints();drawShadow3(ctx,points);
+ if(G3.picked)pencil3(ctx,G3.picked,1.33);
+ drawPlate3(ctx,points);
+ if(G3.hover&&G3.mode==='idle'){const v=project3(v3(G3.hover.x,1.39,G3.hover.z));ctx.save();ctx.strokeStyle='#fff9d1';ctx.lineWidth=3;ctx.setLineDash([5,5]);ctx.beginPath();ctx.arc(v.x,v.y,16,0,Math.PI*2);ctx.stroke();ctx.restore()}
+ // Screen-based ambient specular/grounding and studio label.
+ ctx.save();roundedRect3(ctx,20,19,142,29,14,'#193f5dc9');ctx.fillStyle='#f3fcff';ctx.font='700 14px system-ui';ctx.textBaseline='middle';ctx.fillText('3D BALANCE LAB',35,34);ctx.restore();
+}
+function gameMessage3(s){const n=$('game3d-status');if(n)n.textContent=s;}
+function updateGameTimer3(t){const el=$('game3d-clock');if(el)el.textContent=t.toFixed(1)+'초';}
+function resetGameScene3(){cancelAnimationFrame(G3.raf);G3.token++;G3.mode='idle';G3.picked=null;G3.hover=null;G3.tilt=0;G3.axis=null;G3.elapsed=0;G3.running=false;state.run=false;gameMessage3('삼각형 위에 연필을 놓을 곳을 터치하세요');updateGameTimer3(0);drawGame3D()}
+function pickGame3D(e){if(state.stage!==0||state.run||G3.mode==='fall')return;const cvs=$('game3d-canvas');if(!cvs)return;const rect=cvs.getBoundingClientRect();const p={x:(e.clientX-rect.left)/rect.width*G3.W,y:(e.clientY-rect.top)/rect.height*G3.H};
+ // Hit test the actual 3D-projected triangle, not a flat approximation.
+ const tri=[MODEL.A,MODEL.B,MODEL.C].map(v=>project3(v3(v.x,1.40,v.z)));
+ const weights=barycentric2(p,...tri);if(!weights){toast('파란 삼각형 판 안쪽을 터치하세요.');return}
+ const picked=toTriPoint3(weights),delta=sub3(GC,picked),distance=Math.hypot(delta.x,delta.z);
+ cancelAnimationFrame(G3.raf);G3.token++;G3.mode='balance';G3.picked=picked;G3.hover=null;G3.axis=norm3(v3(delta.z,0,-delta.x));G3.tilt=0;
+ G3.duration=Math.round(Math.min(5.5,.75+4.75*Math.exp(-Math.pow(distance/.76,1.26)))*10)/10;
+ G3.success=distance<.11;G3.duration=G3.success?5.5:G3.duration;
+ G3.elapsed=0;G3.start=performance.now();G3.running=true;state.run=true;
+ const retry=$('game3d-retry');if(retry)retry.disabled=true;
+ gameMessage3('흔들림을 관찰하세요…');const myToken=G3.token;let prev=G3.start;
+ function tick(now){if(myToken!==G3.token||state.stage!==0)return;
+   const dt=Math.min(.045,(now-prev)/1000);prev=now;
+   G3.elapsed=Math.max(0,(now-G3.start)/1000);
+   if(G3.mode==='balance'){
+     const u=Math.min(1,G3.elapsed/G3.duration),dr=Math.min(distance,2.2);
+     G3.tilt=Math.max(0,(.017+dr*.14)*Math.pow(u,1.72)+Math.sin(G3.elapsed*(6+dr))*.009*(.3+dr*.6));
+     updateGameTimer3(Math.min(G3.elapsed,G3.duration));
+     if(G3.elapsed>=G3.duration){if(G3.success){G3.mode='success';G3.tilt=.004;completeGame3D(true);return}else G3.mode='fall'}
+   }
+   if(G3.mode==='fall'){
+     const u=Math.min(1,(G3.elapsed-G3.duration)/1.45),ease=1-Math.pow(1-u,3);
+     G3.tilt=.18+.78*ease;
+     if(u>=1){G3.mode='settled';completeGame3D(false);return}
+   }
+   drawGame3D();G3.raf=requestAnimationFrame(tick);
+ }
+ G3.raf=requestAnimationFrame(tick);
+}
+function completeGame3D(success){state.run=false;G3.running=false;state.last=G3.duration;state.best=Math.max(state.best,G3.duration);state.gameAttempts++;
+ if(!complete('g0'))state.done.push('g0');persist();
+ gameMessage3(success?'완벽한 균형! 무게중심을 아주 가깝게 찾았어요.':`쿵! ${G3.duration.toFixed(1)}초 만에 쓰러졌어요. 다른 점을 도전해 보세요.`);
+ if(success)G3.tilt=0;
+ const tr=$('tries'),la=$('last'),be=$('best');if(tr)tr.textContent=state.gameAttempts+'회';if(la)la.textContent=state.last.toFixed(1)+'초';if(be)be.textContent=state.best.toFixed(1)+'초';
+ const retry=$('game3d-retry');if(retry)retry.disabled=false;
+ drawGame3D();
+ // Refresh stage completion without resetting the last falling frame.
+ const old=$('sidebar');if(old){let label=old.querySelector('.side-card strong');if(label)label.innerHTML=`${state.done.length}<span style="color:#97a9b5;font-size:15px"> / ${IDS.flat().length}</span>`;const bar=old.querySelector('.progressbar>div');if(bar)bar.style.width=Math.round(state.done.length/IDS.flat().length*100)+'%';const progress=old.querySelector('.side-meta strong');if(progress)progress.textContent=Math.round(state.done.length/IDS.flat().length*100)+'%';const chk=old.querySelector('.check-row');if(chk&&!chk.classList.contains('done')){chk.classList.add('done');chk.querySelector('.check-icon').textContent='✓'}}
+ const stag=$('stage-nav')?.querySelector('[data-stage="0"] small');if(stag)stag.textContent='1 / 1 완료';
+ const fb=$('game3d-summary');if(fb)fb.hidden=false;
+}
+function bindGame3D(){const cvs=$('game3d-canvas');if(!cvs)return;G3.raf=0;drawGame3D();cvs.addEventListener('pointerup',e=>{if(G3.mode==='idle')pickGame3D(e)});
+ cvs.addEventListener('pointermove',e=>{if(G3.mode!=='idle')return;const box=cvs.getBoundingClientRect(),p={x:(e.clientX-box.left)/box.width*G3.W,y:(e.clientY-box.top)/box.height*G3.H},pts=[MODEL.A,MODEL.B,MODEL.C].map(v=>project3(v3(v.x,1.40,v.z))),w=barycentric2(p,...pts);G3.hover=w?toTriPoint3(w):null;drawGame3D()});
+ cvs.addEventListener('pointerleave',()=>{G3.hover=null;if(G3.mode==='idle')drawGame3D()});
+}
+
+function medianSvg(t,edit=false){
+ const {A,B,C}=t,D=mid(B,C),E=mid(A,C),F=mid(A,B),G=centroid(t);
+ const medians={D:[A,D,'#e7a24d'],E:[B,E,'#2aa58e'],F:[C,F,'#987ac4']};
+ let parts=triangle(t);
+ for(const k of ['D','E','F']){
+  if(edit||state.medians.includes(k)){
+   const [a,b,c]=medians[k];parts+=`<g class="median-drawn">`+line(a,b,c,3.8)+circle(b,c,5)+text(b,k,9,23)+`</g>`;
+  }
+ }
+ if(edit){
+  parts+=circle(G,'#d2595b',7)+text(G,'G',11,-10);
+  for(const k of ['A','B','C'])parts+=`<circle class="vertex" data-vertex="${k}" cx="${t[k].x}" cy="${t[k].y}" r="22" fill="#fff" fill-opacity=".02" stroke="#73aabd" stroke-dasharray="3 3" stroke-width="2"/>`;
+ }else{
+  if(state.medians.length===3){
+   parts+=`<circle class="centroid-halo" cx="${G.x}" cy="${G.y}" r="17" fill="none" stroke="#db7744" stroke-width="4"/>`;
+   parts+=circle(G,'#ce4b55',8)+text(G,'G',12,-11);
+  }
+  if(state.medianTool && state.medians.length<3){
+   const edges=[['AB',A,B],['BC',B,C],['CA',C,A]];
+   // hit areas are transparent but clickable, drawn before vertex hit areas.
+   for(const [name,a,b] of edges){
+    parts+=`<line class="median-target-edge" data-median-edge="${name}" x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}" stroke="transparent" stroke-width="26"/>`;
+   }
+   for(const k of ['A','B','C']){
+    const p=t[k],sel=state.medianStart===k;
+    parts+=`<circle data-median-vertex="${k}" class="median-target-vertex ${sel?'selected':''}" cx="${p.x}" cy="${p.y}" r="23" fill="${sel?'#f9dfad':'#ecf8f5'}" fill-opacity=".65" stroke="${sel?'#e19e40':'#5aafa0'}" stroke-width="${sel?'3':'1.8'}"/>`;
+   }
+  }
+ }
+ parts+=standardLabels(t);
+ return svgWrapper(parts,`data-kind="${edit?'median-drag':'median-build'}"`);
+}
+function proofSvg(second=false){
+ const t=TRI,{A,B,C}=t,D=mid(B,C),E=mid(A,C),F=mid(A,B),G=centroid(t);
+ let content=triangle(t,'#f0f7fd');
+ if(!second){
+  content+=`<polygon points="${points(G,B,C)}" fill="#b7d9f2" opacity=".65"/><polygon points="${points(G,E,F)}" fill="#7dd7bf" opacity=".85"/>`;
+  content+=line(B,E,'#27a18c',3)+line(C,F,'#9381d6',3)+line(E,F,'#e19e40',3);
+  content+=allMidpointTicks(t,false)+text(F,'F',-23,0)+text(E,'E',12,4);
+ }else{
+  content+=`<polygon points="${points(G,A,B)}" fill="#b7d9f2" opacity=".65"/><polygon points="${points(G,D,E)}" fill="#7dd7bf" opacity=".85"/>`;
+  content+=line(A,D,'#9c83c9',3)+line(B,E,'#27a18c',3)+line(D,E,'#e19e40',3);
+  content+=allMidpointTicks(t,true)+text(D,'D',6,23)+text(E,'E',12,4);
+ }
+ content+=circle(G,'#cf4d56',7)+text(G,second?'G′':'G',9,-12)+standardLabels(t);
+ return svgWrapper(content);
+}
+function sixSvg(){const t=TRI,{A,B,C}=t,D=mid(B,C),E=mid(A,C),F=mid(A,B),G=centroid(t);const polys=[[A,F,G],[A,G,E],[B,F,G],[B,G,D],[C,D,G],[C,G,E]];const colors=['#8ac4ec','#a9d6c5','#f4c69e','#debfe3','#f5d19c','#c6c0ef'];let out=triangle(t,'#fff');polys.forEach((p,i)=>{const selected=state.pieces.includes(i+1);out+=`<polygon data-piece="${i+1}" points="${points(...p)}" fill="${colors[i]}" fill-opacity="${selected?'1':'.53'}" stroke="${selected?'#186f63':'#fff'}" stroke-width="${selected?'4':'2'}" style="cursor:pointer"/>`;const q={x:(p[0].x+p[1].x+p[2].x)/3,y:(p[0].y+p[1].y+p[2].y)/3};out+=`<text x="${q.x}" y="${q.y}" fill="#264866" font-size="22" font-weight="900" text-anchor="middle" dominant-baseline="middle" pointer-events="none">${i+1}</text>`});return svgWrapper(out+circle(G,'#ac5254',5)+text(G,'G',9,-12)+standardLabels(t))}
+function areaBasic(){
+ const t=TRI,{A,B,C}=t,D=mid(B,C),G=centroid(t);
+ return svgWrapper(triangle(t,'#edf5fe')+
+  `<polygon points="${points(A,B,D)}" fill="#add2f0" fill-opacity=".66"/><polygon points="${points(G,B,D)}" fill="#73b6dc"/>`+
+  line(A,D,'#577e9e',3)+circle(G,'#cf5555',6)+text(G,'G',9,-12)+text(D,'D',5,23)+standardLabels(t)+
+  `<text x="${(G.x+B.x+D.x)/3}" y="${(G.y+B.y+D.y)/3}" font-family="Georgia,serif" font-size="28" font-weight="700" fill="#fff" pointer-events="none">?</text>`);
+}
+function selectPair(first){const sel=first?state.choices:state.choices2,opts=first?['△GBC','△GEF','△GAB','△GAC']:['△G′AB','△G′DE','△G′BC','△G′AC'];return `<div class="task-row">${opts.map((o,i)=>`<button type="button" class="choice ${sel.includes(i)?'selected':''}" data-pair="${first?'first':'second'}" data-option="${i}">${o}</button>`).join('')}</div><button class="button" data-action="${first?'check-first':'check-second'}">선택 확인</button>`}
+function areaAnswer(id,label='정답 확인'){return `<div class="answer-line"><input type="number" inputmode="numeric" class="answer-input" min="0" id="${id}" placeholder="?" aria-label="넓이 정답"><span>cm²</span><button class="button" data-action="${id==='area0'?'area0':'area1'}">${label}</button></div>`}
+function gameView(){return `<div class="section-top"><div><div class="section-kicker">01 · DISCOVER</div><h2>삼각형을 균형 잡아라!</h2></div><span class="mini-pill">3D 균형 실험</span></div><p class="section-desc">입체 삼각형 판을 연필 끝으로 받쳐 보세요. 받침점이 무게중심에서 멀어질수록 판이 빨리 기울어 쓰러집니다.</p><div class="diagram game3d"><canvas id="game3d-canvas" width="960" height="532" role="img" aria-label="연필 위에서 기울어지다 쓰러지는 입체 삼각형 균형 게임. 파란 삼각형 판을 터치하여 받침점을 선택하세요."></canvas><div class="game3d-panel"><div class="game3d-label" id="game3d-status" aria-live="polite">${G3.mode==='settled'?`쿵! ${G3.duration.toFixed(1)}초 만에 쓰러졌어요.`:G3.mode==='success'?'완벽한 균형! 다시 시도해 보세요.':'파란 삼각형을 터치해서 연필 받침점을 선택하세요'}</div><div class="game3d-time"><small>현재 버틴 시간</small><strong id="game3d-clock">${G3.mode==='idle'?'0.0초':G3.duration.toFixed(1)+'초'}</strong></div></div></div><div class="stat-grid"><div class="stat"><strong id="tries">${state.gameAttempts}회</strong><span>시도 횟수</span></div><div class="stat"><strong id="last">${state.last.toFixed(1)}초</strong><span>이번 기록</span></div><div class="stat"><strong id="best">${state.best.toFixed(1)}초</strong><span>최고 기록</span></div></div><div class="task-row game3d-gamebar"><button id="game3d-retry" class="button secondary" data-action="restart-game" ${state.run?'disabled':''}>↺ 새로 도전하기</button><span class="micro">※ 판의 두께·그림자·3D 회전은 입체로 표현했습니다. 버틴 시간은 교육용 가상 수치입니다.</span></div>${help('어디를 받칠 때 가장 오래 버틸까요? 여러 위치를 시도한 다음, 중선으로 정확한 균형점을 찾아봅시다.')}<div class="feedback" id="game3d-summary" ${complete('g0')?'':'hidden'}>게임 탐구 완료! 무게중심을 수학적으로 찾을 방법을 탐구해 봅시다.</div><div class="go-row"><span class="micro">서버 연결 없이 이 파일 하나로 모든 탐구를 진행합니다.</span><button class="button" data-action="next-stage">② 중선 탐구 →</button></div>`}
+function medianView(){
+ const edit=state.sub===1;
+ const status=state.medians.length===3?'세 중선을 모두 완성했습니다.':state.medianStart?`꼭짓점 ${state.medianStart} 선택 완료 · 마주 보는 변을 선택하세요.`:state.medianTool?'꼭짓점 A, B, C 중 하나를 터치하세요.':'먼저 아래의 〈중선〉 도구를 선택하세요.';
+ const completed=state.medians.map(k=>`✓ ${k} 중선`).join('　')||'아직 그린 중선이 없어요';
+ return `<div class="section-top"><div><div class="section-kicker">02 · INVESTIGATE</div><h2>중선을 이용하여 찾자!</h2></div><span class="mini-pill">기하 탐구</span></div>
+  <p class="section-desc">삼각형에서 한 꼭짓점과 그 대변의 중점을 이은 선분을 <b>중선</b>이라고 합니다.</p>${renderSubnav()}
+  ${edit
+   ?`<p class="problem">꼭짓점 A, B, C를 끌어 삼각형의 모양을 바꿔 보세요.</p>`
+   :`<p class="problem">중선 도구를 선택하고, <strong>꼭짓점 → 마주 보는 변</strong> 순서로 눌러 보세요.</p><div class="median-toolbar"><button type="button" class="button ${state.medianTool?'':'secondary'}" data-action="activate-median-tool" aria-pressed="${state.medianTool}">✎ 중선</button><div class="tool-instruction"><b>${status}</b><span>도구 → 점 → 대변을 선택하면 중점이 생성되고 중선이 그려집니다.</span></div></div>`}
+  <div class="diagram median-diagram">${medianSvg(edit?state.tri:TRI,edit)}${!edit&&state.medianQuestion?'<div class="centroid-question" role="status">세 중선은 정말<br>한 점에서 만날까?</div>':''}</div>
+  ${edit
+   ?`${help('꼭짓점을 움직여도 세 중선은 한 점 G에서 만납니다. 하지만 여러 도형에서 관찰했다는 사실만으로 증명은 아닙니다.')}<div class="task-row"><button class="button secondary" data-action="reset-triangle">삼각형 모양 원래대로</button></div>${complete('m1')?'<div class="feedback">변형 관찰 완료! 이제 성질을 수학적으로 증명해 봅시다.</div>':''}`
+   :`<div class="task-row"><span class="mini-pill">${completed}</span></div>${help('한 꼭짓점과 그 대변의 중점을 연결한 선분이 중선입니다. 꼭짓점에 대응하는 대변을 선택하세요.')}${complete('m0')?'<div class="feedback">세 중선이 모두 완성되었어요. 한 점 G가 강조됩니다. 이 성질이 항상 참인지 다음 활동에서 증명해 봅시다.</div>':''}`}
+  <div class="go-row"><span class="micro">${edit?'두 번째 탐구':'첫 번째 탐구'}</span><button class="button" data-action="${edit?'next-stage':'next-sub'}">${edit?'③ 성질 증명 →':'삼각형 변형 관찰 →'}</button></div>`;
+}
+function proofRecord(){
+ const p0=complete('p0'),p1=complete('p1'),p2=complete('p2'),p3=complete('p3');
+ return `<aside class="proof-board" aria-label="누적 증명 기록">
+  <div class="proof-board-heading"><span>✍ 증명 기록</span><small>맞힌 내용은 계속 남아요</small></div>
+  <div class="proof-step ${p0?'proof-achieved':state.sub===0?'proof-current':''}"><b class="step-num">1</b>
+   <div class="proof-step-text"><b>첫 번째 닮음</b>
+    <p>△ABC에서 두 중선 <em>BE, CF</em>의 교점을 <em>G</em>라 하자.</p>
+    <p>점 <em>E, F</em>는 각각 <em>AC, AB</em>의 중점이므로</p>
+    <p class="math-assert"><em>FE ∥ BC</em>,　<em>FE = ½ BC</em></p>
+    <p>따라서 ${p0?'<strong class="proved-math">△GBC ∽ △GEF</strong>':'<span class="blank-proof">닮은 삼각형 찾기</span>'} (AA 닮음)</p>
+    <p>닮음비 <em>2 : 1</em>이므로</p>
+    <p class="math-assert"><em>BG : GE = CG : GF =</em> ${p1?'<b class="proved-math">2 : 1</b>':'<span class="blank-proof">□ : 1</span>'}</p>
+   </div></div>
+  <div class="proof-step ${p2?'proof-achieved':state.sub===2?'proof-current':''}"><b class="step-num">2</b>
+   <div class="proof-step-text"><b>두 번째 닮음</b>
+    <p>두 중선 <em>AD, BE</em>의 교점을 <em>G′</em>라 하자.</p>
+    <p>중점연결정리로 <em>DE ∥ AB</em>이고 <em>DE = ½ AB</em>.</p>
+    <p>${p2?'<strong class="proved-math">△G′AB ∽ △G′DE</strong>':'<span class="blank-proof">두 번째 닮음 찾기</span>'} (AA 닮음)</p>
+    <p class="math-assert"><em>AG′ : G′D = BG′ : G′E =</em> ${p2?'<b class="proved-math">2 : 1</b>':'<span class="blank-proof">□ : 1</span>'}</p>
+   </div></div>
+  <div class="proof-step ${p3?'proof-achieved':state.sub===3?'proof-current':''}"><b class="step-num">3</b>
+   <div class="proof-step-text"><b>세 중선의 교점</b>
+    <p><em>G</em>와 <em>G′</em>는 모두 중선 <em>BE</em>를 꼭짓점 <em>B</em>로부터 ${p1&&p2?'<b class="proved-math">2 : 1</b>':'<span class="blank-proof">□ : 1</span>'}로 나누는 점이다.</p>
+    <p>따라서 ${p3?'<b class="proved-math">G = G′</b>':'<span class="blank-proof">□ = □</span>'} 이고, 세 중선은 <b>한 점</b>에서 만난다.</p>
+    <p>무게중심은 각 중선을 꼭짓점으로부터 ${p3?'<b class="proved-math">2 : 1</b>':'<span class="blank-proof">□ : 1</span>'}로 나눈다.</p>
+   </div></div>
+ </aside>`;
+}
+function proofView(){
+ const k=state.sub;let content='';
+ if(k===0){
+  content=`<p class="problem">닮은 두 삼각형 △GBC와 △GEF를 선택하세요.</p><div class="diagram">${proofSvg(false)}</div>${selectPair(true)}${help('F, E는 각각 AB, AC의 중점입니다. FE∥BC, FE=BC/2를 이용하여 대응하는 각을 살펴보세요.')}`;
+ }else if(k===1){
+  content=`<p class="problem">△GBC ∽ △GEF의 닮음비를 완성하세요.</p><div class="diagram">${proofSvg(false)}</div><div class="answer-line"><span class="math-assert">BG : GE =</span><input type="number" id="ratio-first-a" class="answer-input" inputmode="numeric" min="1" placeholder="□" aria-label="첫 번째 비"><span>:</span><input type="number" id="ratio-first-b" class="answer-input" inputmode="numeric" min="1" placeholder="□" aria-label="두 번째 비"></div><button class="button" data-action="ratio-first">닮음비 확인</button>${help('BC:FE=2:1이므로 닮은 삼각형 △GBC와 △GEF의 대응변의 비도 2:1입니다.')}`;
+ }else if(k===2){
+  content=`<p class="problem">중선 AD와 BE의 교점을 G′라 할 때 닮은 두 삼각형을 선택하고 비를 완성하세요.</p><div class="diagram">${proofSvg(true)}</div>${selectPair(false)}<div class="answer-line"><span class="math-assert">BG′ : G′E =</span><input type="number" id="ratio-second-a" class="answer-input" inputmode="numeric" min="1" placeholder="□" aria-label="첫 번째 비"><span>:</span><input type="number" id="ratio-second-b" class="answer-input" inputmode="numeric" min="1" placeholder="□" aria-label="두 번째 비"></div>${help('D, E가 각각 BC, AC의 중점이므로 DE∥AB, DE=AB/2입니다.')}`;
+ }else{
+  content=`<p class="problem">G와 G′가 같은 점인 이유를 선택해 보세요.</p><div class="diagram">${proofSvg(true)}</div><div class="task-row">${['두 점은 모두 중선 BE를 B로부터 2:1로 나눈다.','모든 삼각형은 정삼각형이기 때문이다.','세 중선의 길이가 모두 같기 때문이다.'].map((v,i)=>`<button class="choice ${state.proofChoice===String(i)?'selected':''}" data-conclusion="${i}">${v}</button>`).join('')}</div><button class="button" data-action="check-conclusion">이유 확인</button>${help('한 선분을 같은 비율로 내분하는 점은 하나뿐입니다.')}`;
+ }
+ return `<div class="section-top"><div><div class="section-kicker">03 · PROVE</div><h2>세 중선의 교점은 한 점에서 만날까?</h2></div><span class="mini-pill">닮음 증명</span></div>
+  <p class="section-desc">관찰한 현상을 <b>중점연결정리와 AA 닮음</b>을 이용해 증명합니다. 맞힌 내용은 왼쪽에 계속 기록됩니다.</p>
+  ${renderSubnav()}
+  <div class="proof-workspace">${proofRecord()}<section class="proof-question">${content}${complete(IDS[2][k])?'<div class="feedback">정답! 왼쪽 증명 기록에 추가되었습니다.</div>':''}</section></div>
+  <div class="go-row"><span class="micro">${k+1}/4 증명 단계 · 증명 기록 누적</span><button class="button" data-action="${k<3?'next-sub':'next-stage'}">${k<3?'다음 증명 →':'④ 넓이 탐구 →'}</button></div>`;
+}
+function areaView(){const six=state.sub===1;return `<div class="section-top"><div><div class="section-kicker">04 · APPLY</div><h2>${six?'삼각형이 6등분된다!':'무게중심과 넓이'}</h2></div><span class="mini-pill">넓이 탐구</span></div><p class="section-desc">△ABC의 넓이는 <b>36cm²</b>이고 G는 무게중심, D는 BC의 중점입니다.</p>${renderSubnav()}<p class="problem">${six?'여섯 개의 작은 삼각형을 모두 터치하고, 각 넓이를 구하세요.':'△GBD의 넓이는 몇 cm²일까요?'}</p><div class="area-info-row"><span>삼각형 ABC 전체 넓이</span><strong><span class="math-inline">△ABC</span> = 36 cm²</strong></div><div class="diagram">${six?sixSvg():areaBasic()}</div>${six?`<div class="area-grid">${Array.from({length:6},(_,i)=>`<div class="area-chip ${state.pieces.includes(i+1)?'active':''}">${i+1}번 ${state.pieces.includes(i+1)?'✓':'○'}</div>`).join('')}</div>${areaAnswer('area1','넓이 비교 완료')}${help('한 중선은 삼각형의 넓이를 이등분합니다. 세 중선으로 만든 각 조각의 넓이는 서로 같습니다.')}`:`${areaAnswer('area0')}${help('먼저 △ABD=18cm²입니다. △ABG와 △GBD는 B에서 직선 AD까지의 높이가 같으므로 넓이의 비가 AG:GD=2:1입니다.')}`}${complete(IDS[3][state.sub])?'<div class="feedback">정답입니다. 그림뿐 아니라 밑변과 높이의 관계로 넓이를 설명해 보세요.</div>':''}${six && complete('a1')?'<div class="lesson-done"><h3>탐구를 모두 마쳤습니다! 🎉</h3><p>무게중심은 세 중선이 만나는 점이며, 각 중선을 꼭짓점부터 2:1로 나눕니다. 세 중선은 넓이가 같은 6개의 작은 삼각형을 만듭니다.</p></div>':''}<div class="go-row"><span class="micro">${six?'전체 학습 정리':'넓이 예제'}</span><button class="button" data-action="${six?'go-first':'next-sub'}">${six?'① 게임으로 돌아가기':'6등분 탐구 →'}</button></div>`}
+function renderSubnav(){return `<div class="subnav" aria-label="세부 활동">${SUBS[state.stage].map((n,i)=>`<button class="sub-button ${i===state.sub?'active':''}" data-sub="${i}">${complete(IDS[state.stage][i])?'✓ ':''}${i+1}. ${n}</button>`).join('')}</div>`}
+function render(){const done=state.done.length,total=IDS.flat().length;$('stage-nav').innerHTML=STAGES.map((n,i)=>{const cnt=IDS[i].filter(complete).length;return `<button class="stage-tab ${state.stage===i?'active':''}" data-stage="${i}" aria-current="${state.stage===i?'step':'false'}"><span class="stage-index">${i+1}</span><span><span class="stage-label">${n}</span><br><small>${cnt} / ${IDS[i].length} 완료</small></span>${cnt===IDS[i].length?'<span class="stage-complete">✓</span>':''}</button>`}).join('');document.querySelector('.columns').classList.toggle('is-proof',state.stage===2);$('stage-content').innerHTML=[gameView,medianView,proofView,areaView][state.stage]();$('sidebar').innerHTML=`<div class="side-card"><h3>나의 학습 진도</h3><strong style="font-size:29px;color:#1b6e65">${done}<span style="color:#97a9b5;font-size:15px"> / ${total}</span></strong><div class="progressbar" role="progressbar" aria-label="학습 완료도" aria-valuenow="${done}" aria-valuemin="0" aria-valuemax="${total}"><div style="width:${Math.round(done/total*100)}%"></div></div><div class="side-meta"><span>학습 완료율</span><strong>${Math.round(done/total*100)}%</strong></div>${SUBS.map((subs,i)=>subs.map((n,j)=>`<div class="check-row ${complete(IDS[i][j])?'done':''}"><span class="check-icon">${complete(IDS[i][j])?'✓':'·'}</span><span>${i+1}-${j+1}. ${n}</span></div>`).join('')).join('')}</div><div class="side-card"><h3>학습 안내</h3><div class="side-note">상단의 ①~④ 단계와 각 세부 활동을 자유롭게 이동할 수 있어요. 잠금이나 제한 시간은 없습니다. 활동 완료 표시와 기록은 내 기기의 현재 탭에서만 보이며 서버로 전송되지 않습니다.</div><div class="task-row"><button type="button" class="button secondary" data-action="reset-prompt">학습 기록 초기화</button></div></div>`;if(state.stage===1&&state.sub===1)bindDrag();if(state.stage===0)bindGame3D();persist();}
+function checkRatio(a,b){const x=$(a)?.value.trim(),y=$(b)?.value.trim();return x==='2'&&y==='1'}
+const inside=(p,t)=>{const cross=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);const signs=[cross(t.A,t.B,p),cross(t.B,t.C,p),cross(t.C,t.A,p)];return signs.every(v=>v>=0)||signs.every(v=>v<=0)};
+function svgPoint(svg,e){const point=svg.createSVGPoint();point.x=e.clientX;point.y=e.clientY;return point.matrixTransform(svg.getScreenCTM().inverse())}
+function bindDrag(){const svg=$('math-svg');if(!svg)return;let current=null,moved=false;svg.addEventListener('pointerdown',e=>{const target=e.target.closest('[data-vertex]');if(!target)return;current=target.dataset.vertex;svg.setPointerCapture(e.pointerId);moved=false;e.preventDefault()});svg.addEventListener('pointermove',e=>{if(!current)return;const p=svgPoint(svg,e),next={x:clamp(p.x,36,615),y:clamp(p.y,25,345)};const candidate={...state.tri,[current]:next};const area=Math.abs((candidate.B.x-candidate.A.x)*(candidate.C.y-candidate.A.y)-(candidate.B.y-candidate.A.y)*(candidate.C.x-candidate.A.x));if(area<30000)return;moved=moved||dist(state.tri[current],next)>1;state.tri[current]=next;const holder=document.createElement('div');holder.innerHTML=medianSvg(state.tri,true);svg.innerHTML=holder.querySelector('svg').innerHTML;e.preventDefault()});svg.addEventListener('pointerup',()=>{if(current&&moved){state.dragged=true;finish('m1','삼각형을 움직여 관찰했습니다!')}current=null;});svg.addEventListener('pointercancel',()=>{current=null})}
+function medianToolPick(e){
+ if(state.stage!==1||state.sub!==0||!state.medianTool)return;
+ const vertex=e.target.closest('[data-median-vertex]');
+ if(vertex){
+  state.medianStart=vertex.dataset.medianVertex;
+  render();toast(`꼭짓점 ${state.medianStart} 선택 · 마주 보는 변을 선택하세요.`);return;
+ }
+ const edge=e.target.closest('[data-median-edge]');
+ if(!edge)return;
+ if(!state.medianStart){toast('꼭짓점을 먼저 선택하세요.');return;}
+ const opposite={A:'BC',B:'CA',C:'AB'};
+ const k={A:'D',B:'E',C:'F'}[state.medianStart];
+ if(edge.dataset.medianEdge!==opposite[state.medianStart]){
+  toast(`꼭짓점 ${state.medianStart}에 마주 보는 변 ${opposite[state.medianStart]}를 선택하세요.`);return;
+ }
+ if(state.medians.includes(k)){
+  state.medianStart='';render();toast('이미 그린 중선입니다. 다른 꼭짓점을 선택하세요.');return;
+ }
+ state.medians.push(k);
+ state.medianStart='';
+ if(state.medians.length===3){
+  state.medianTool=false;
+  finish('m0','세 중선이 한 점 G에서 만났어요!');
+  // Highlight G first, then display the central investigation question.
+  setTimeout(()=>{if(state.stage===1&&state.sub===0&&state.medians.length===3){state.medianQuestion=true;render();setTimeout(()=>{if(state.stage===1&&state.sub===0){state.medianQuestion=false;render();}},4400)}},1250);
+ }else{render();toast(`${k}를 지나는 중선 완성! 다음 꼭짓점을 선택하세요.`)}
+}
+function toggleChoice(which,n){const k=which==='first'?'choices':'choices2',set=new Set(state[k]);set.has(n)?set.delete(n):set.add(n);state[k]=[...set];render()}
+function clearAll(){cancelAnimationFrame(G3.raf);G3.token++;G3.mode="idle";G3.picked=null;G3.tilt=0;G3.axis=null;sessionStorage.removeItem(KEY);state={stage:0,sub:0,done:[],tri:cloneTri(),medians:[],dragged:false,gameAttempts:0,best:0,last:0,run:false,point:null,choices:[],choices2:[],pieces:[],proofChoice:'',reveal:false,medianTool:false,medianStart:'',medianQuestion:false};render();toast('학습 기록을 초기화했습니다.')}
+// The SVG is delegated for hit-testing and piece selection. Other actions are native buttons.
+$('stage-content').addEventListener('pointerdown',e=>{if(e.target.closest('svg[data-kind="median-build"]'))medianToolPick(e)});
+document.addEventListener('click',e=>{const stage=e.target.closest('[data-stage]');if(stage){stageTo(+stage.dataset.stage);return}const sub=e.target.closest('[data-sub]');if(sub){subTo(+sub.dataset.sub);return}const pair=e.target.closest('[data-pair]');if(pair){toggleChoice(pair.dataset.pair,+pair.dataset.option);return}const concl=e.target.closest('[data-conclusion]');if(concl){state.proofChoice=concl.dataset.conclusion;render();return}const piece=e.target.closest('[data-piece]');if(piece){const n=+piece.dataset.piece;const s=new Set(state.pieces);s.has(n)?s.delete(n):s.add(n);state.pieces=[...s];render();return}const btn=e.target.closest('[data-action]');if(!btn)return;const a=btn.dataset.action;
+ if(a==='next-stage'){stageTo(state.stage+1);return}if(a==='next-sub'){subTo(state.sub+1);return}
+ if(a==='restart-game'){resetGameScene3();return}
+ if(a==='go-first'){stageTo(0);return}
+ if(a==='reset-prompt'){if(window.confirm('학습 기록을 모두 초기화할까요?\n완료한 활동, 게임 기록, 중선 및 증명 기록이 삭제되며 되돌릴 수 없습니다.'))clearAll();return}
+ if(a==='activate-median-tool'){state.medianTool=!state.medianTool;state.medianStart='';render();return}
+ if(a==='reset-triangle'){state.tri=cloneTri();state.dragged=false;render();return}
+ if(a==='check-first'){const ok=state.choices.length===2&&state.choices.includes(0)&&state.choices.includes(1);if(ok)finish('p0','맞아요. △GBC ∽ △GEF입니다.');else toast('두 삼각형을 다시 선택해 보세요.');return}
+ if(a==='ratio-first'){if(checkRatio('ratio-first-a','ratio-first-b'))finish('p1','AA 닮음으로 BG:GE=2:1입니다.');else toast('대응하는 변의 길이의 비를 다시 확인하세요.');return}
+ if(a==='check-second'){const ok=state.choices2.length===2&&state.choices2.includes(0)&&state.choices2.includes(1)&&checkRatio('ratio-second-a','ratio-second-b');if(ok)finish('p2','△G′AB∽△G′DE, BG′:G′E=2:1입니다.');else toast('닮은 삼각형 2개와 닮음비 2:1을 모두 확인하세요.');return}
+ if(a==='check-conclusion'){if(state.proofChoice==='0')finish('p3','G와 G′는 BE 위의 같은 점이므로 세 중선이 한 점에서 만납니다.');else toast('두 점이 같은 중선 BE에서 어떤 비를 갖는지 생각해 보세요.');return}
+ if(a==='area0'){if($('area0')?.value.trim()==='6')finish('a0','정답! △GBD의 넓이는 6cm²입니다.');else toast('△ABD의 넓이 18cm²와 2:1 관계를 다시 살펴보세요.');return}
+ if(a==='area1'){if(state.pieces.length!==6){toast('먼저 여섯 조각을 모두 눌러보세요.');return}if($('area1')?.value.trim()==='6')finish('a1','정답! 여섯 조각의 넓이는 각각 6cm²입니다.');else toast('전체 넓이 36cm²를 똑같은 6개의 조각으로 나누어 보세요.');return}
+
+ });
+render();
+})();
+</script>
+</body>
+</html>
